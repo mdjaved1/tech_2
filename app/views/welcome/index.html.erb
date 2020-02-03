@@ -1,0 +1,46 @@
+
+<div class="jumbotron container">
+  <h1>Muhammads  MovieDB</h1>
+    <p> The MovieDB API.</p>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h3>TV SHOW SEARCH </h3>
+
+        <%= form_tag("/tv_shows/results", method: "get") do %>
+            <%= label_tag(:q, "Search for:") %> <!--q variable represents the string entered in the Search box-->
+            <%= text_field_tag(:q) %>
+            <%= submit_tag("Search") %>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <h3>Popular TV Shows</h3>
+    <div class="popular-shows"> 
+        <table class="table table-bordered table-striped ">
+            <% @popular[:results].each do |tv|  %>
+            <thead>
+                <tr>
+                    <th scope="col">TV Show</th>
+                    <th scope="col">Popularity</th>
+                    <th scope="col">First Air Date</th>
+                    <th scope="col">Synopsis</th>
+                    <th scope="col">Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= tv[:original_name]%></td>
+                    <td><%= tv[:popularity]%></td>
+                    <td><%= tv[:first_air_date]%></td>
+                    <td><%= tv[:overview]%></td>
+                    <td><%= tv[:vote_average]%></td>
+                </tr>
+            </tbody>
+            <% end %>
+        </table>
+    </div>
+  </div>
+</div>

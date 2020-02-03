@@ -1,0 +1,10 @@
+<h1>Muhammads MovieDB</h1>
+<h2>More details for show</h2>
+
+                
+ <h3><%= @show[:name].upcase %></h3>
+ <p><%= @show[:overview]%></p>
+ <p><% genre = @show[:genres]%><%= genre[0].values[1] %></p>
+ <p><% creator = @show[:created_by]%><%= creator[0].values[2]%></p>
+     
+</div> 

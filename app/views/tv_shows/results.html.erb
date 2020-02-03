@@ -1,0 +1,38 @@
+<h1>Muhammads  MovieDB</h1>
+<h2>Search Results</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="search-results"> 
+            <table class="table table-bordered table-hover">     
+                <thead class="thead-dark">
+                    <tr class="d-flex text-center">
+                        <th class="col-sm-2 align-top">TV Show</th>
+                        <th class="col-sm-1 align-top">Popularity</th>
+                        <th class="col-sm-2 align-top">First Air Date</th>
+                        <th class="col-sm-4 align-top">Synopsis</th>
+                        <th class="col-sm-1 align-top">Rating</th>
+                        <th class="col-sm-1 align-top">Vote Count</th>
+                        <th class="col-sm-1">Show Details</th>
+                    </tr>
+                </thead>
+                <% @results[:results].each do |tv|  %>
+                    <tbody>
+                        <tr class="d-flex text-center">
+                            <td class="col-sm-2"><%= tv[:original_name] %></td>
+                            <td class="col-sm-1"><%= tv[:popularity].round%></td>
+                            <td class="col-sm-2"><%= tv[:first_air_date].to_time.strftime("%B %e, %Y")%></td>
+                            <td class="col-sm-4"><%= tv[:overview]%></td>
+                            <td class="col-sm-1"><%= tv[:vote_average]%></td>
+                            <td class="col-sm-1"><%= tv[:vote_count]%></td>
+                            <td class="col-sm-1"><%= form_tag("/tv_shows/show", method: "get") do %>
+                                <%= hidden_field_tag(tv[:id]) %> <!--captures TV show ID number to link to individual show page-->
+                                <%= submit_tag("View") %>
+                            <% end %></td>
+                        </tr>
+                    </tbody>
+                <% end %>
+         </table>
+        </div>
+    </div>
+</div>
